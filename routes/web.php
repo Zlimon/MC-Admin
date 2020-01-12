@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index')->name('index');
+Route::patch('/', 'PagesController@startServer')->name('start-server');
+Route::patch('/', 'PagesController@stopServer')->name('stop-server');
+Route::post('/', 'PagesController@executeRcon')->name('execute-rcon');
 
+
+Route::post('autocomplete/fetch', 'PagesController@autocomplete')->name('autocomplete.fetch');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
